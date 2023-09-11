@@ -1,14 +1,11 @@
 const container = document.querySelector('.container');
+let cells;
 
-
-
-function newGrid() {
-    //x => number of cells
-    let x = 0;
-    do{
-        x = prompt("Enter number of cells (should be < 100):");
-    }while((x > 100) || (x <= 0));
-    makeGrid(x);
+// run the function one time only
+let done = false;
+if(!done){
+    done = true;
+    makeGrid();
 }
 
 
@@ -22,7 +19,23 @@ function makeGrid(x = 16){
         container.appendChild(div);        
         }
     }
+    cells = Array.from(document.querySelectorAll('.cell'));
+    cells.forEach(cell => cell.addEventListener("mouseover", changeBackground))
+}
     
+
+function newGrid() {
+    //x => number of cells
+    let x = 0;        
+    do{
+        x = prompt("Enter number of cells (should be < 100):");
+    }while((x > 100) || (x <= 0));
+    removeGrid();
+    makeGrid(x);
+}
+
+function removeGrid(){        
+    cells.forEach(cell => cell.remove());           
 }
 
 
@@ -30,7 +43,5 @@ function changeBackground(){
     this.style.backgroundColor = 'black';
 }
 
-makeGrid();
-const cells = document.querySelectorAll('.cell');
-cells.forEach(cell => cell.addEventListener("mouseover", changeBackground));
+
 
