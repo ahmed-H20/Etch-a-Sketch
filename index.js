@@ -1,5 +1,5 @@
 const container = document.querySelector('.container');
-let cells;
+let cells, div;
 
 // run the function one time only
 let done = false;
@@ -16,7 +16,7 @@ document.body.onmouseup = () => (mouseDown = false);
 function makeGrid(x = 16){    
     for (let column = 0; column < x; column++) {
         for (let raw = 0; raw < x; raw++) {
-            const div = document.createElement('div');
+            div = document.createElement('div');
             div.className = 'cell';        
             div.style.width = `${960/x}px`;
             div.style.height = `${960/x}px`;
@@ -44,13 +44,22 @@ function removeGrid(){
 }
 
 
-function changeBackground(e){
+function changeBackground(e,rainbow){
     if (e.type === 'mouseover' && !mouseDown) return;
-    this.style.backgroundColor = 'black';
+    this.style.backgroundColor = 'black';   
 }
 
 function refresh(){
     cells.forEach(cell => cell.style.backgroundColor = '#f9faf8');
 }
 
+
+function rainbow(e){    
+    const randomR = Math.floor(Math.random() * 256);
+    const randomG = Math.floor(Math.random() * 256);
+    const randomB = Math.floor(Math.random() * 256);
+    for(let i = 0; i < cells.length; i++){
+        div.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+    }
+}
 
