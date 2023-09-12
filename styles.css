@@ -1,8 +1,29 @@
+body{
+    background-color: #b6853d;
+}
+
+header{
+    text-align: center;
+    font-size: 48px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    color: #f9faf8;
+}
+
+main{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .container{
     display: flex;
     flex-wrap: wrap;
     width: 960px;
-    outline: 2px black solid;    
+    outline: 5px black solid;
+    margin: 0; 
+    background-color: #f9faf8;   
 }
 
 .container div{    
@@ -10,4 +31,21 @@
     padding: 0;       
     border: none;
     outline: 1px black solid;    
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.buttons button{
+    border: none;
+    color: #8d662b;
+    font-size: 48px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    margin: 30px 0;
+    border-radius: 20px;
+    padding: 20px;
 }

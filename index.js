@@ -7,7 +7,9 @@ if(!done){
     done = true;
     makeGrid();
 }
-
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
 
 function makeGrid(x = 16){    
     for (let column = 0; column < x; column++) {
@@ -16,11 +18,15 @@ function makeGrid(x = 16){
         div.className = 'cell';        
         div.style.width = `${960/x}px`;
         div.style.height = `${960/x}px`;
+        div.addEventListener('mousedown', changeBackground);
+        div.addEventListener('mouseover', changeBackground);
         container.appendChild(div);        
         }
     }
     cells = Array.from(document.querySelectorAll('.cell'));
-    cells.forEach(cell => cell.addEventListener("mouseover", changeBackground))
+    //cells.forEach(cell => cell.addEventListener('mousedown', changeBackground))
+    //cells.forEach(cell => cell.addEventListener('mouseover', changeBackground))
+    
 }
     
 
@@ -39,7 +45,8 @@ function removeGrid(){
 }
 
 
-function changeBackground(){
+function changeBackground(e){
+    if (e.type === 'mouseover' && !mouseDown) return;
     this.style.backgroundColor = 'black';
 }
 
